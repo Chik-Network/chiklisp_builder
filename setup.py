@@ -1,5 +1,5 @@
 from setuptools import setup
 
 setup(
-    py_modules=["chialisp_builder"],
+    py_modules=["chiklisp_builder"],
 )

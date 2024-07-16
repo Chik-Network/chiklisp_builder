@@ -3,10 +3,10 @@ from pathlib import Path
 import shutil
 import tempfile
 
-from chialisp_builder import ChialispBuild
+from chiklisp_builder import ChiklispBuild
 
 
-def test_chialisp_build():
+def test_chiklisp_build():
     here = Path(__file__).parent
     with tempfile.TemporaryDirectory() as tmpdir:
         tmpdir = Path(tmpdir)
@@ -16,7 +16,7 @@ def test_chialisp_build():
 
         # create builder
         _mod_file = tmpdir / "mod.clsp"
-        artifact_f = ChialispBuild(include_paths=[tmpdir])
+        artifact_f = ChiklispBuild(include_paths=[tmpdir])
         target_path = tmpdir / "mod.hex"
 
         artifact_f(target_path)
@@ -31,7 +31,7 @@ def test_chialisp_build():
         output = target_path.read_text()
         assert output == "ff10ff02ffff018201f480\n"
 
-        # change `b.clib` but rewrite target file so we trick `ChialispBuild` into not rebuilding
+        # change `b.clib` but rewrite target file so we trick `ChiklispBuild` into not rebuilding
         blib.write_text("((defconstant CONST_B 500))")
         target_path.write_text(output)
 

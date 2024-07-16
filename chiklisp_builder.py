@@ -3,7 +3,7 @@ from typing import List
 
 import re
 
-import clvm_tools_rs
+import klvm_tools_rs
 
 CRE = re.compile(r"\((\s)*include(\s)+(.+)\)")
 
@@ -39,7 +39,7 @@ def calculate_dependencies(source_path: Path, include_paths: List[Path]) -> List
     return dependencies
 
 
-class ChialispBuild:
+class ChiklispBuild:
     def __init__(self, include_paths: List[Path] = []):
         self.include_paths = include_paths
         self.include_paths_as_str = [str(_) for _ in include_paths]
@@ -53,9 +53,9 @@ class ChialispBuild:
         if not target_path.exists() or target_path.stat().st_mtime < latest_date:
             # we need to rebuild
             if target_path.exists():
-                # `compile_clvm` doesn't always replace existing files as of 0.1.34
+                # `compile_klvm` doesn't always replace existing files as of 0.1.34
                 target_path.unlink()
             source_path_str, target_path_str = str(source_path), str(target_path)
-            clvm_tools_rs.compile_clvm(
+            klvm_tools_rs.compile_klvm(
                 source_path_str, target_path_str, self.include_paths_as_str
             )
