@@ -15,7 +15,7 @@ def test_chiklisp_build():
         shutil.copytree(here, tmpdir, dirs_exist_ok=True)
 
         # create builder
-        _mod_file = tmpdir / "mod.clsp"
+        mod_file = tmpdir / "mod.clsp"
         artifact_f = ChiklispBuild(include_paths=[tmpdir])
         target_path = tmpdir / "mod.hex"
 
