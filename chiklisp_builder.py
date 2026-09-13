@@ -3,7 +3,7 @@ from typing import List
 
 import re
 
-import klvm_tools_rs
+import clvk_tools_rs
 
 CRE = re.compile(r"\((\s)*include(\s)+(.+)\)")
 
@@ -53,9 +53,9 @@ class ChiklispBuild:
         if not target_path.exists() or target_path.stat().st_mtime < latest_date:
             # we need to rebuild
             if target_path.exists():
-                # `compile_klvm` doesn't always replace existing files as of 0.1.34
+                # `compile_clvk` doesn't always replace existing files as of 0.1.34
                 target_path.unlink()
             source_path_str, target_path_str = str(source_path), str(target_path)
-            klvm_tools_rs.compile_klvm(
+            clvk_tools_rs.compile_clvk(
                 source_path_str, target_path_str, self.include_paths_as_str
             )

@@ -4,7 +4,7 @@ Use this wheel in conjunction with `runtime_builder` to manage building of chikl
 
 # Use
 
-Add `chiklisp_builder` as a buildtime dependency and a development-time dependency. Don't add it as a runtime dependency, as the klvm `.hex` files should be built and included with the wheel. The source does not need to be.
+Add `chiklisp_builder` as a buildtime dependency and a development-time dependency. Don't add it as a runtime dependency, as the clvk `.hex` files should be built and included with the wheel. The source does not need to be.
 
 Add `chiklisp_loader` as a runtime dependency to get the `load_program` function, which will call the building function if present (as it should be at development time.)
 
